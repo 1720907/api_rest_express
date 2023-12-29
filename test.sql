@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 17-12-2023 a las 09:27:05
+-- Tiempo de generación: 29-12-2023 a las 02:25:47
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -32,7 +32,7 @@ CREATE TABLE `orders` (
   `ORDER_N` int(11) NOT NULL,
   `DATE` datetime NOT NULL,
   `N_PRODUCTS` int(11) NOT NULL,
-  `FINAL_PRICE` int(11) NOT NULL
+  `FINAL_PRICE` float NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 -- --------------------------------------------------------
