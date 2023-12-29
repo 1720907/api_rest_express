@@ -39,6 +39,22 @@ const addOrder =async(req,res)=>{
     }
 };
 
+const updateOrder =async(req,res)=>{
+    try{
+        const {ID_ORDER, ORDER_N,DATE,N_PRODUCTS,FINAL_PRICE} = req.body;
+        if(ID_ORDER===undefined || ORDER_N===undefined || DATE===undefined || N_PRODUCTS===undefined || FINAL_PRICE===undefined){
+            res.status(400).json({message: "Bad request. Please fill all fields"});
+        }
+        const connection = await getConnection();
+        const order = {ID_ORDER, ORDER_N,DATE,N_PRODUCTS,FINAL_PRICE};
+        const result = await connection.query("UPDATE ORDERS SET ? WHERE ID_ORDER = ?", [order, ID_ORDER]);
+        res.json({message: "product updated"});
+
+    }catch(error){
+        res.status(500).json(error.message);
+    }
+};
+
 
 const deleteOrder = async (req,res)=>{
     try{
@@ -55,6 +71,7 @@ const deleteOrder = async (req,res)=>{
 export const methods = {
     getOrders,
     addOrder,
+    updateOrder,
     getOrder,
     deleteOrder
 };
